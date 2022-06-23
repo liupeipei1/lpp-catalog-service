@@ -26,6 +26,7 @@ dependencies {
     implementation(lpps.commons.lang3)
     implementation(lpps2.lombok)
     implementation(libs.spring.boot.starter)
+    implementation(libs1.spring.boot.starter)
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'

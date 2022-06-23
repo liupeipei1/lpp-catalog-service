@@ -74,6 +74,7 @@ short-notation = "some.plugin.id:1.4"
 long-notation = { id = "some.plugin.id", version = "1.4" }
 
 **step1: 创建libs.versions.toml文件在gradle文件夹下**
+
 settings.gradle 目前可以支持多个toml
 `dependencyResolutionManagement {
     versionCatalogs {
@@ -84,11 +85,13 @@ settings.gradle 目前可以支持多个toml
 }`
 
 or 在build. gradle文件加上去添加catalog
+
 `plugins {
     id 'java'
     id 'version-catalog'
 }`
 在build. gradle文件 添加文件引入
+
 `catalog{
     versionCatalog{
         libs {
@@ -96,6 +99,17 @@ or 在build. gradle文件加上去添加catalog
         }
     }
 }`
+
+**step2: 使用**
+
+`dependencies {
+    implementation(lpps.groovy.core)
+    implementation(lpps.commons.lang3)
+    implementation(lpps2.lombok)
+    implementation(libs.spring.boot.starter)
+    implementation(libs1.spring.boot.starter)
+}`
+
 
 
 

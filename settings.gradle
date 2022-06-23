@@ -25,7 +25,7 @@ dependencyResolutionManagement {
 
 
         }
-       //Create a separate catalog for each import you want to use.
+
         libs1 {
             from(files("../lpp-catalog-service/gradle/libs.versions.toml"))
         }
