@@ -1,2 +1,39 @@
+dependencyResolutionManagement {
+    versionCatalogs {
+        lpps {
+            version('groovy', '3.0.5')
+            version('checkstyle', '5.8.1')
+
+            library('groovy-core', 'org.codehaus.groovy', 'groovy').versionRef('groovy')
+            //别名必须由一系列标识符组成，这些标识符由短划线（推荐）、下划线 （） 或点 （） 分隔。标识符本身必须由 ascii 字符（最好是小写）组成，后跟数字。-_.
+            library('groovy-json', 'org.codehaus.groovy:groovy-json:3.0.5')
+            library('groovy-nio', 'org.codehaus.groovy:groovy-nio:3.0.5')
+            library('commons-lang3', 'org.apache.commons', 'commons-lang3').version {
+                strictly '[3.8, 4.0['  //这里是强制版本，但是prefer话会选择3.9
+                prefer '3.9'
+            }
+        }
+
+        lpps2 {
+            library('lombok', 'org.projectlombok:lombok:1.18.20')
+            library('groovy-core', 'org.codehaus.groovy:groovy:3.0.5')
+            library('groovy-json', 'org.codehaus.groovy:groovy-json:3.0.5')
+            library('groovy-nio', 'org.codehaus.groovy:groovy-nio:3.0.5')
+            bundle('groovy', ['groovy-core', 'groovy-json', 'groovy-nio']) //bundle 可以理解程一捆
+
+            plugin('jmh', 'me.champeau.jmh').version('0.6.5')  //插件
+
+
+        }
+       //Create a separate catalog for each import you want to use.
+        libs1 {
+            from(files("../lpp-catalog-service/gradle/libs.versions.toml"))
+        }
+        testLibs {
+            from(files('../lpp-catalog-service/gradle/test-libs.versions.toml'))
+        }
+    }
+}
+
 rootProject.name = 'lpp-catalog-service'
 

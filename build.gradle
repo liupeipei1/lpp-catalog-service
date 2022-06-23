@@ -1,15 +1,32 @@
 plugins {
     id 'java'
+    id 'version-catalog'
+    alias(lpps2.plugins.jmh)
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+    mavenCentral()  //https://repo.maven.apache.org/maven2/
+}
+
+catalog{
+    versionCatalog{
+        libs {
+            from(files("../gradle/libs.versions.toml"))
+        }
+
+    }
 }
 
 dependencies {
+
+    implementation(lpps.groovy.core)
+    implementation(lpps.commons.lang3)
+    implementation(lpps2.lombok)
+    implementation(libs.spring.boot.starter)
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }

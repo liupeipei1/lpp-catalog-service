@@ -1,0 +1,28 @@
+[versions]
+groovy = "3.0.5"
+checkstyle = "8.37"
+common = "1.4"
+spring-boot = "2.7.0"
+
+#spring-boot-starter = { strictly = "[1.0, 2.0[", prefer = "1.2" }
+
+[libraries]
+spring-boot-starter = "org.springframework.boot:spring-boot-starter:2.7.0"
+spring-boot-starter1 = { group = "org.springframework.boot", name="spring-boot-starter", version.ref="spring-boot" }
+spring-boot-starter2 = { module = "org.springframework.boot:spring-boot-starter",version.ref="spring-boot" }
+
+groovy-core = { module = "org.codehaus.groovy:groovy", version.ref = "groovy" }
+groovy-json = { module = "org.codehaus.groovy:groovy-json", version.ref = "groovy" }
+groovy-nio = { module = "org.codehaus.groovy:groovy-nio", version.ref = "groovy" }
+commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version = { strictly = "[3.8, 4.0[", prefer="3.9" } }
+
+[bundles]
+groovy = ["groovy-core", "groovy-json", "groovy-nio"]
+spring-boot-starter-bundle= ['spring-boot-starter','spring-boot-starter1','spring-boot-starter2']
+
+
+[plugins]  ##plugin (String alias, String id)
+jmh = { id = "me.champeau.jmh", version = "0.6.5" }
+short-notation = "some.plugin.id:1.4"
+long-notation = { id = "some.plugin.id", version = "1.4" }
+reference-notation = { id = "some.plugin.id", version.ref = "common" }
